@@ -2,8 +2,10 @@ package com.example.absolutelysaurabh.todoapp.data;
 
 
 import android.content.Context;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.design.widget.TabLayout;
 
 public class TaskDbHelper extends SQLiteOpenHelper {
 
@@ -15,7 +17,7 @@ public class TaskDbHelper extends SQLiteOpenHelper {
 
 
     // Constructor
-    TaskDbHelper(Context context) {
+    public TaskDbHelper(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
     }
 
@@ -45,4 +47,21 @@ public class TaskDbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TaskContract.TaskEntry.TABLE_NAME);
         onCreate(db);
     }
+
+    public int numRows(){
+
+            SQLiteDatabase db = this.getReadableDatabase();
+            int numRows = (int) DatabaseUtils.queryNumEntries(db, TaskContract.TaskEntry.TABLE_NAME);
+            return numRows;
+        }
+
+    public int deleteAll(){
+
+            SQLiteDatabase db = this.getWritableDatabase();
+            db.execSQL("delete from "+ TaskContract.TaskEntry.TABLE_NAME);
+
+        return 0;
+    }
+
+
 }

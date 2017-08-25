@@ -10,6 +10,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.View;
+
+import com.example.absolutelysaurabh.todoapp.activity.MainActivity;
 
 import static com.example.absolutelysaurabh.todoapp.data.TaskContract.TaskEntry.TABLE_NAME;
 
@@ -74,6 +77,8 @@ public class TaskContentProvider extends ContentProvider {
         // Write URI matching code to identify the match for the tasks directory
         int match = sUriMatcher.match(uri);
         Uri returnUri; // URI to be returned
+
+        MainActivity.l.setVisibility(View.GONE);
 
         switch (match) {
             case TASKS:

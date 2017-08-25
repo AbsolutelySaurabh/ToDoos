@@ -8,22 +8,30 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/icon_1"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        android:theme="@style/AppTheme.Base">
+
+        <activity
+            android:name=".activity.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.AddTaskActivity"/>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity android:name=".activity.AddTaskActivity" />
 
         <provider
+            android:name=".data.TaskContentProvider"
             android:authorities="com.example.absolutelysaurabh.todoapp"
-            android:name="com.example.absolutelysaurabh.todoapp.data.TaskContentProvider"
             android:enabled="true"
-            android:exported="false"/>
-
+            android:exported="false" />
     </application>
 
 </manifest>
