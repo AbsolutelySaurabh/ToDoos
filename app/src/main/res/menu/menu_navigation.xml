@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/nav_home"
+            android:checked="true"
+            android:icon="@drawable/ic_home_82_black_24dp"
+            android:title="Current Tasks" />
+
+        <item
+            android:id="@+id/nav_add_todo"
+            android:icon="@drawable/ic_add_circle_82_black_24dp"
+            android:title="Add Todo"
+            />
+
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share_black_82_24dp"
+            android:title="Share App"
+            />
+
+    </group>
+
+</menu>
