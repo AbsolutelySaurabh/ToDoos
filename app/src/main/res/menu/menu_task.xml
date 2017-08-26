@@ -4,8 +4,11 @@
     tools:context=".Activity.MainActivity">
 
     <item
-        android:id="@+id/action_share"
-        android:title="Share Task"
+        android:id="@+id/offline_tip"
+        android:title="Offline Mic"
         android:orderInCategory="100"
         app:showAsAction="never" />
+
 </menu>
+
+

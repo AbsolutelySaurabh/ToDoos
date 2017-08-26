@@ -1,16 +1,20 @@
 package com.example.absolutelysaurabh.todoapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.GradientDrawable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.absolutelysaurabh.todoapp.R;
+import com.example.absolutelysaurabh.todoapp.activity.MainActivity;
 import com.example.absolutelysaurabh.todoapp.data.TaskContract;
 
 
@@ -50,7 +54,6 @@ public class CustomCursorAdapter extends RecyclerView.Adapter<CustomCursorAdapte
         return new TaskViewHolder(view);
     }
 
-
     /**
      * Called by the RecyclerView to display data at a specified position in the Cursor.
      *
@@ -69,8 +72,34 @@ public class CustomCursorAdapter extends RecyclerView.Adapter<CustomCursorAdapte
 
         // Determine the values of the wanted data
         final int id = mCursor.getInt(idIndex);
-        String description = mCursor.getString(descriptionIndex);
-        int priority = mCursor.getInt(priorityIndex);
+        final String description = mCursor.getString(descriptionIndex);
+        final int priority = mCursor.getInt(priorityIndex);
+
+        ImageButton shareImageButton = (ImageButton) holder.itemView.findViewById(R.id.share_button);
+        shareImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "To Do: "+ priority +",\n" +description );
+                sendIntent.setType("text/plain");
+                mContext.startActivity(Intent.createChooser(sendIntent,("Share task via:")));
+                Snackbar.make(v, "Sharing....", Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
+        ImageButton deleteImageButton = (ImageButton) holder.itemView.findViewById(R.id.deleteButton);
+        deleteImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Snackbar.make(v, "Tip: " +"Swipe Left to Delete", Snackbar.LENGTH_SHORT).show();
+
+            }
+        });
+
 
         //Set values
         holder.itemView.setTag(id);

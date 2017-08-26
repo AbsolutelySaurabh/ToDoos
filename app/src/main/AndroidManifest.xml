@@ -25,7 +25,9 @@
             android:screenOrientation="portrait"
             >
         </activity>
-        <activity android:name=".activity.AddTaskActivity" />
+        <activity
+            android:name=".activity.AddTaskActivity"
+            android:theme="@style/WithActionBar"/>
 
         <provider
             android:name=".data.TaskContentProvider"

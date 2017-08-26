@@ -1,21 +1,48 @@
 package com.example.absolutelysaurabh.todoapp.activity;
 
+import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.StringRes;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ActionProvider;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.absolutelysaurabh.todoapp.R;
 import com.example.absolutelysaurabh.todoapp.data.TaskContract;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
 public class AddTaskActivity extends AppCompatActivity {
+
+    private TextView txtSpeechInput;
+    private ImageButton btnSpeak;
+    private final int REQ_CODE_SPEECH_INPUT = 100;
+    ArrayList<String> result = new ArrayList<String>();
+
+    public static String offline_mic_tip = "To be able to use Google Mic in offline mode follow the steps: \n" +   "1. On your device go to Settings -> Language and Input. Click on icon on Google voice input.\n" +
+            "2. Under ALL tab select the language you want to download.\n" +
+            "3. Once the language package downloaded, you can see it under INSTALLED tab.";
 
     // Declare a member variable to keep track of a task's selected mPriority
     private int mPriority;
@@ -25,30 +52,72 @@ public class AddTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
-        // Adding Toolbar to Main screen
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Initialize to highest mPriority by default (mPriority = 1)
         ((RadioButton) findViewById(R.id.radButton1)).setChecked(true);
         mPriority = 1;
+
+        btnSpeak.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                promptSpeechInput();
+            }
+        });
     }
 
+    /**
+     * Showing google speech input dialog
+     * */
+    private void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                getString(R.string.speech_prompt));
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.speech_not_supported),
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
 
     /**
-     * onClickAddTask is called when the "ADD" button is clicked.
-     * It retrieves user input and inserts that new task data into the underlying database.
-     */
+     * Receiving speech input
+     * */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+
+                    EditText input = ((EditText) findViewById(R.id.editTextTaskDescription));
+                    input.setText(result.get(0).substring(0, 1).toUpperCase() + result.get(0).
+                            substring(1, result.get(0).length()) + ".");
+
+                }
+                break;
+            }
+
+        }
+    }
+
     public void onClickAddTask(View view) {
-        // Not yet implemented
-        // Check if EditText is empty, if not retrieve input and store it in a ContentValues object
-        // If the EditText input is empty -> don't create an entry
+
         String input = ((EditText) findViewById(R.id.editTextTaskDescription)).getText().toString();
         if (input.length() == 0) {
             return;
         }
-
         // Insert new task data via a ContentResolver
         // Create new empty ContentValues object
         ContentValues contentValues = new ContentValues();
@@ -68,11 +137,10 @@ public class AddTaskActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_task, menu);
         return true;
     }
 
@@ -81,12 +149,18 @@ public class AddTaskActivity extends AppCompatActivity {
 
         switch(item.getItemId()){
 
-            case R.id.action_share:
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.setType("text/plain");
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey, \nTake a look at ToDoos android app on Google Playstore");
-                this.startActivity(Intent.createChooser(sendIntent,("Share app via:")));
+            case R.id.offline_tip:
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(offline_mic_tip)
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //do things
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
 
         }
         return super.onOptionsItemSelected(item);
@@ -105,5 +179,12 @@ public class AddTaskActivity extends AppCompatActivity {
         } else if (((RadioButton) findViewById(R.id.radButton3)).isChecked()) {
             mPriority = 3;
         }
+    }
+
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 }
