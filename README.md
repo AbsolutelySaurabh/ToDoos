@@ -1,4 +1,3 @@
-![screenshots](https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/icon.png)
 <h1 align="center">
     ToDoos
   <br>
@@ -31,9 +30,9 @@ You can [download](https://drive.google.com/uc?export=download&id=1D8xx4FX4onx4r
   
   
 ## Demo  
-  <img  src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_1.png" width="240" height="420" >   <img src="hthttps://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_2.png" width="240" height="420">
-  <img src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_3.png" width="240" height="420">
-  <img src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_4.png" width="240" height="420">
+  <img  src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_1.png" width="220" height="380" >   <img src="hthttps://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_2.png" width="220" height="380">
+  <img src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_3.png" width="220" height="380">
+  <img src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_4.png" width="220" height="380">
 
   
 ## Development  
