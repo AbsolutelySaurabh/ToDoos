@@ -1,9 +1,9 @@
-![screenshot](https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/icon.png)
+![screenshots](https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/icon.png)
 <h1 align="center">
     ToDoos
   <br>
 </h1>
-<h3 align="center">The proprity-manager android app.</h3>
+<h3 align="center">The priority-manager android app.</h3>
 <h6 align="center"><a href="https://drive.google.com/uc?export=download&id=1D8xx4FX4onx4rrjow4zWKnjMcFxV3pD8"><img src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/icons/icon.png" width="200"></a></h6>
 <p align="center">
   <a href="https://github.com/AbsolutelySaurabh/ToDoos#fork-destination-box">
@@ -31,13 +31,13 @@ You can [download](https://drive.google.com/uc?export=download&id=1D8xx4FX4onx4r
   
   
 ## Demo  
-  <img  src="screenshots/todoos_1" width="290" height="500" >   <img src="screenshots/todoos_2" width="290" height="500">
-  <img src="screenshots/todoos_3" width="290" height="500">
-  <img src="screenshots/todoos_4" width="290" height="500">
+  <img  src="screenshots/todoos_1" width="240" height="450" >   <img src="screenshots/todoos_2" width="240" height="450">
+  <img src="screenshots/todoos_3" width="240" height="450">
+  <img src="screenshots/todoos_4" width="240" height="450">
 
   
 ## Development  
-Want to contribute? **:pencil:**  **:books**
+Want to contribute? **:pencil:**  **:books:**
   
 To fix a bug or enhance an existing module, follow these steps:  
   
