@@ -30,9 +30,9 @@ You can [download](https://drive.google.com/uc?export=download&id=1D8xx4FX4onx4r
   
   
 ## Demo  
-  <img  src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_1.png" width="210" height="340" >    <img  src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_2.png" width="210" height="340" >
-  <img src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_3.png" width="210" height="340">
-  <img src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_4.png" width="210" height="340">
+  <img  src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_1.png" width="212" height="350" >    <img  src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_2.png" width="212" height="350" >
+  <img src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_3.png" width="212" height="350">
+  <img src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_4.png" width="212" height="350">
 
   
 ## Development  
