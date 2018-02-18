@@ -31,9 +31,8 @@ You can [download](https://drive.google.com/uc?export=download&id=1D8xx4FX4onx4r
   
   
 ## Demo  
-  <img  src="screenshots/todoo_1" width="240" height="450" >   <img src="screenshots/todoo_2" width="240" height="450">
-  <img src="screenshots/todoo_3" width="240" height="450">
-  <img src="screenshots/todoo_4" width="240" height="450">
+  <img  src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_1.png" width="240" height="450" >   <img src="hthttps://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_3" width="240" height="450">
+  <img src="https://github.com/AbsolutelySaurabh/ToDoos/blob/master/screenshots/todoo_4" width="240" height="450">
 
   
 ## Development  
